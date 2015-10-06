@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<algebra>
+<basicAlgebra>
+<algName>GactH</algName>
+<desc>The permutational algebra ([ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 ], S4).</desc>
+<cardinality>12</cardinality>
+<operations>
+<op>
+<opSymbol><opName>g0</opName>
+<arity>1</arity>
+</opSymbol>
+<opTable>
+<intArray>
+<row>10,9,11,7,6,8,1,0,2,4,3,5</row>
+</intArray>
+</opTable>
+</op>
+<op>
+<opSymbol><opName>g1</opName>
+<arity>1</arity>
+</opSymbol>
+<opTable>
+<intArray>
+<row>0,2,1,6,8,7,3,5,4,9,11,10</row>
+</intArray>
+</opTable>
+</op>
+</operations>
+</basicAlgebra>
+</algebra>

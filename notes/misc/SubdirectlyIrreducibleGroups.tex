@@ -1,0 +1,227 @@
+%\documentclass[8pt]{article}
+\documentclass[11pt]{article}
+\usepackage{enumerate,amsmath,amssymb,fancyhdr,mathrsfs,amscd,stmaryrd,amsthm}
+\usepackage{setspace}
+\usepackage{graphicx}
+\usepackage{color}
+\usepackage{tikz}
+\usepackage{url}
+\usepackage{hyperref}
+\onehalfspacing
+\raggedbottom
+\usepackage[margin=1in]{geometry}
+%\usepackage[myheadings]{fullpage}
+%\usepackage[paperwidth=9cm, paperheight=12cm, top=1cm, left=1cm,right=1cm,bottom=1.5cm, includefoot]{geometry}
+%\usepackage[paperwidth=14cm, paperheight=9cm, top=1cm, left=1cm, right=1cm,bottom=1cm, includefoot]{geometry}
+
+\theoremstyle{plain}
+\newtheorem{theorem} {Theorem}
+\newtheorem{corollary} {Corollary}
+\newtheorem*{main} {Main-Theorem}
+\newtheorem{lemma} {Lemma}
+\newtheorem{proposition}{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\theoremstyle{remark}
+\newtheorem*{notation}{Notation}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+%\numberwithin{equation}{section}
+
+\newcommand{\<}{\ensuremath{\langle}}
+\renewcommand{\>}{\ensuremath{\rangle}}
+\newcommand{\two}{\ensuremath{\mathbf{2}}}
+\newcommand{\three}{\ensuremath{\mathbf{3}}}
+\newcommand{\Eq}{\ensuremath{\mathrm{Eq}}}
+\newcommand{\Core}{\ensuremath{\mathrm{Core}}}
+\newcommand{\Sym}{\ensuremath{\mathrm{Sym}}}
+\newcommand{\GL}{\ensuremath{\mathrm{GL}}}
+\newcommand{\Con}{\ensuremath{\mathrm{Con}}}
+\newcommand{\meet}{\ensuremath{\wedge}}
+\newcommand{\join}{\ensuremath{\vee}}
+\newcommand{\bA}{\ensuremath{\mathbf{A}}}
+\newcommand{\bn}{\ensuremath{\mathbf{n}}}
+\newcommand{\bx}{\ensuremath{\mathbf{x}}}
+\newcommand{\by}{\ensuremath{\mathbf{y}}}
+\newcommand{\upalpha}{\ensuremath{\alpha^{\uparrow}}}
+\newcommand{\downalpha}{\ensuremath{\alpha^{\downarrow}}}
+\newcommand{\upbeta}{\ensuremath{\beta^{\uparrow}}}
+\newcommand{\downbeta}{\ensuremath{\beta^{\downarrow}}}
+\newcommand{\subnormal}{\ensuremath{\trianglelefteqslant}}
+\newcommand{\supnormal}{\ensuremath{\trianglerighteqslant}}
+\newcommand{\notsubnormal}{\ensuremath{\ntrianglelefteqslant}}
+\renewcommand{\leq}{\ensuremath{\leqslant}}
+\renewcommand{\nleq}{\ensuremath{\nleqslant}}
+\renewcommand{\geq}{\ensuremath{\geqslant}}
+
+\newcommand{\Ltwo}{\ensuremath{\mathcal{L}_2}}
+\newcommand{\Lone}{\ensuremath{\mathcal{L}_1}}
+
+\pagestyle{fancy}
+\lhead{{\it Some semidirect and wreath product constructions}}  \chead{}  \rhead{May 6, 2011}
+
+\begin{document}
+{\renewcommand{\thefootnote}{}\footnotetext{William DeMeo \url{<williamdemeo@gmail.com>}}}
+There are very few subdirrectly irreducible finite groups.  
+Here's a list of those of order |G|<1024 (except |G|=512 or 768)
+\begin{center}
+  
+\begin{tabular}{r|l|l}
+Group ID  &   Group Description  &  IsSimple\\
+\hline
+(60,5) &  A5  &  true\\
+(120,5) &   SL(2,5)   & false\\
+(120,34) &   S5   & false\\
+(168,42) &   PSL(3,2)  &  true\\
+(240,89) &   C2 . S5 = SL(2,5) . C2   & false\\
+(240,90) &   SL(2,5) : C2   & false\\
+(240,93) &   SL(2,5) : C2   & false\\
+(336,114) &   SL(2,7)   & false\\
+(336,208) &   PSL(3,2) : C2   & false\\
+(360,118)&  A6 &   true\\
+(480,218) &   GL(2,5)   & false\\
+(480,221) &   C8 . A5 = SL(2,5) . C4   & false\\
+(480,946) &   (C2 . S5 = SL(2,5) . C2) : C2   & false\\
+(480,947) &   (C2 . S5 = SL(2,5) . C2) : C2   & false\\
+(480,948) &   (SL(2,5) : C2) : C2   & false\\
+(480,953) &   (C2 x SL(2,5)) : C2   & false\\
+(480,957) &   (C2 x SL(2,5)) : C2   & false\\
+(480,959) &   (SL(2,5) : C2) : C2   & false\\
+(504,156) &   PSL(2,8) &   true\\
+(660,13)  &   PSL(2,11)&   true\\
+(672,1044) &   SL(2,7) : C2   & false\\
+(672,1045) &   C2 . (PSL(3,2) : C2) = SL(2,7) . C2   & false\\
+(672,1047) &   SL(2,7) : C2   & false\\
+(720,409) &   SL(2,9)   & false\\
+(720,763) &   S6   & false\\
+(720,764) &   A6 : C2   & false\\
+(720,765) &   A6 . C2   & false\\
+(960,638) &  48&    2304&    20&    C8 . S5 = SL(2,5) . C8    & false\\
+(960,641) &  80&    6400&    12 &   C16 . A5 = SL(2,5) . C8 &   false\\
+(960,5685) &  48&    2304&    20&    (C8 . A5 = SL(2,5) . C4) : C2   & false\\
+(960,5687) &  40&    1600&    24&    (C8 . A5 = SL(2,5) . C4) : C2   & false\\
+(960,5688) &  40&    1600&    24&    ((C2 . S5 = SL(2,5) . C2) : C2) : C2   & false\\
+(960,5689) &  40&    1600&    24&    ((SL(2,5) : C2) : C2) : C2   & false\\
+(960,5690) &  40&    1600&    24&    C2 . ((C2 x S5) : C2) = (SL(2,5) : C2) . (C2 x C2)   & false\\
+(960,5694) &  40&    1600&    24&    GL(2,5) : C2   & false\\
+(960,5715) &  24&    576&    40&    ((C2 . S5 = SL(2,5) . C2) : C2) : C2   & false\\
+(960,5716) &  24&    576&    40&    ((SL(2,5) : C2) : C2) : C2   & false\\
+(960,5719) &  24&    576&    40&    ((SL(2,5) : C2) : C2) : C2   & false\\
+(960,5720) &  24&    576&    40&    ((C2 . S5 = SL(2,5) . C2) : C2) : C2   & false\\
+(960,5738) &  40&    1600&    24&    (C8 . A5 = SL(2,5) . C4) : C2   & false\\
+(960,5740) &  40&    1600&    24&    (C8 . A5 = SL(2,5) . C4) : C2   & false\\
+(960,5742) &  40&    1600&    24&    (C8 . A5 = SL(2,5) . C4) : C2   & false\\
+(960,5744) &  40&    1600&    24&    (C8 . A5 = SL(2,5) . C4) : C2   & false\\
+(960,10870) &  40&    1600&    24&    (C2 x (SL(2,5) : C2)) : C2   & false\\
+(960,10872) &  24&    576&    40&    (C2 x (C2 . S5 = SL(2,5) . C2)) : C2   & false\\
+(960,10873) &  24&    576&    40&    (C2 x (SL(2,5) : C2)) : C2   & false\\
+(960,10877) &  24&    576&    40&    ((SL(2,5) : C2) : C2) : C2   & false\\
+(960,10878) &  24&    576&    40&    ((C2 . S5 = SL(2,5) . C2) : C2) : C2   & false\\
+(960,10891) &  40&    1600&    24&    (C2 x (SL(2,5) : C2)) : C2   & false\\
+(960,11357) &  16&    256&    60&    (C2 x C2 x C2 x C2) : A5   & false\\
+(960,11358) &  12&    144&    80&    (C2 x C2 x C2 x C2) : A5   & false
+\end{tabular}
+\end{center}
+
+
+\begin{center}
+\begin{tabular}{r|l|l}
+GrpID  & $|A|$ &   $|A|^2$&   $|G:A| $ &  Group Description  &  IsSimple\\
+\hline
+(60,5) &  5&    25&    12&    A5   & true\\
+(120,5) &  10&    100&    12&    SL(2,5)   & false\\
+(120,34) &  6&    36&    20&    S5   & false\\
+(168,42) &  7&    49&    24&    PSL(3,2)   & true\\
+(240,89) &  12&    144&    20&    C2 . S5 = SL(2,5) . C2   & false\\
+(240,90) &  12&    144&    20&    SL(2,5) : C2   & false\\
+(336,114) &  14&    196&    24&    SL(2,7)   & false\\
+(336,208) &  8&    64&    42&    PSL(3,2) : C2   & false\\
+(360,118) &  9&    81&    40&    A6   & true\\
+(480,947) &  20&    400&    24&    (C2 . S5 = SL(2,5) . C2) : C2   & false\\
+(480,948) &  20&    400&    24&    (SL(2,5) : C2) : C2   & false\\
+(480,953) &  20&    400&    24&    (C2 x SL(2,5)) : C2   & false\\
+(480,957) &  20&    400&    24&    (C2 x SL(2,5)) : C2   & false\\
+(480,959) &  20&    400&    24&    (SL(2,5) : C2) : C2   & false\\
+(504,156) &  9&    81&    56&    PSL(2,8)   & true\\
+(660,13) &  11&    121&    60&    PSL(2,11)   & true\\
+(672,1044) &  16&    256&    42&    SL(2,7) : C2   & false\\
+(672,1045) &  16&    256&    42&    C2 . (PSL(3,2) : C2) = SL(2,7) . C2   & false\\
+(720,409) &  18&    324&    40&    SL(2,9)   & false\\
+(720,763) &  9&    81&    80&    S6   & false\\
+(720,764) &  10&    100&    72&    A6 : C2   & false\\
+(720,765) &  9&    81&    80&    A6 . C2   & false\\
+(960,5715) &  24&    576&    40&    ((C2 . S5 = SL(2,5) . C2) : C2) : C2   & false\\
+(960,5716) &  24&    576&    40&    ((SL(2,5) : C2) : C2) : C2   & false\\
+(960,5719) &  24&    576&    40&    ((SL(2,5) : C2) : C2) : C2   & false\\
+(960,5720) &  24&    576&    40&    ((C2 . S5 = SL(2,5) . C2) : C2) : C2   & false\\
+(960,10872) &  24&    576&    40&    (C2 x (C2 . S5 = SL(2,5) . C2)) : C2   & false\\
+(960,10873) &  24&    576&    40&    (C2 x (SL(2,5) : C2)) : C2   & false\\
+(960,10877) &  24&    576&    40&    ((SL(2,5) : C2) : C2) : C2   & false\\
+(960,10878) &  24&    576&    40&    ((C2 . S5 = SL(2,5) . C2) : C2) : C2   & false\\
+(960,11357) &  16&    256&    60&    (C2 x C2 x C2 x C2) : A5   & false\\
+(960,11358) &  12&    144&    80&    (C2 x C2 x C2 x C2) : A5   & false
+\end{tabular}
+\end{center}
+
+\end{document}
+
+
+\begin{tabular}{r|r|r|r|l|l}
+GrpID  & $|A|$ &   $|A|^2$&   $|G:A| $ &  Group Description  &  IsSimple\\
+\hline
+(60,5) &  5&    25&    12&    A5  &  true\\
+(120,5) &  10&    100&    12&    SL(2,5)   & false\\
+(120,34) &  6&    36&    20&    S5   & false\\
+(168,42) &  7&    49&    24&    PSL(3,2)    true
+(240,89) &  12&    144&    20&    C2 . S5 = SL(2,5) . C2   & false\\
+(240,90) &  12&    144&    20&    SL(2,5) : C2   & false\\
+(240,93) &  20&    400&    12&    SL(2,5) : C2   & false\\
+(336,114) &  14&    196&    24&    SL(2,7)   & false\\
+(336,208) &  8&    64&    42&    PSL(3,2) : C2   & false\\
+(360,118)   9    81    40    A6    true
+(480,218) &  24&    576&    20&    GL(2,5)   & false\\
+(480,221) &  40&    1600&    12&    C8 . A5 = SL(2,5) . C4   & false\\
+(480,946) &  24&    576&    20&    (C2 . S5 = SL(2,5) . C2) : C2   & false\\
+(480,947) &  20&    400&    24&    (C2 . S5 = SL(2,5) . C2) : C2   & false\\
+(480,948) &  20&    400&    24&    (SL(2,5) : C2) : C2   & false\\
+(480,953) &  20&    400&    24&    (C2 x SL(2,5)) : C2   & false\\
+(480,957) &  20&    400&    24&    (C2 x SL(2,5)) : C2   & false\\
+(480,959) &  20&    400&    24&    (SL(2,5) : C2) : C2   & false\\
+(504,156)   9    81    56    PSL(2,8)    true
+(660,13)   11    121    60    PSL(2,11)    true
+(672,1044) &  16&    256&    42&    SL(2,7) : C2   & false\\
+(672,1045) &  16&    256&    42&    C2 . (PSL(3,2) : C2) = SL(2,7) . C2   & false\\
+(672,1047) &  28&    784&    24&    SL(2,7) : C2   & false\\
+(720,409) &  18&    324&    40&    SL(2,9)   & false\\
+(720,763) &  9&    81&    80&    S6   & false\\
+(720,764) &  10&    100&    72&    A6 : C2   & false\\
+(720,765) &  9&    81&    80&    A6 . C2   & false\\
+(960,638)   48    2304    20    C8 . S5 = SL(2,5) . C8    false
+(960,641)   80    6400    12    C16 . A5 = SL(2,5) . C8    false
+(960,5685)   48    2304    20    (C8 . A5 = SL(2,5) . C4) : C2    false
+(960,5687)   40    1600    24    (C8 . A5 = SL(2,5) . C4) : C2    false
+(960,5688)   40    1600    24    ((C2 . S5 = SL(2,5) . C2) : C2) : C2    false
+(960,5689)   40    1600    24    ((SL(2,5) : C2) : C2) : C2    false
+(960,5690)   40    1600    24    C2 . ((C2 x S5) : C2) = (SL(2,5) : C2) . (C2 x C2)    false
+(960,5694)   40    1600    24    GL(2,5) : C2    false
+(960,5715)   24    576    40    ((C2 . S5 = SL(2,5) . C2) : C2) : C2    false
+(960,5716)   24    576    40    ((SL(2,5) : C2) : C2) : C2    false
+(960,5719)   24    576    40    ((SL(2,5) : C2) : C2) : C2    false
+(960,5720)   24    576    40    ((C2 . S5 = SL(2,5) . C2) : C2) : C2    false
+(960,5738)   40    1600    24    (C8 . A5 = SL(2,5) . C4) : C2    false
+(960,5740)   40    1600    24    (C8 . A5 = SL(2,5) . C4) : C2    false
+(960,5742)   40    1600    24    (C8 . A5 = SL(2,5) . C4) : C2    false
+(960,5744)   40    1600    24    (C8 . A5 = SL(2,5) . C4) : C2    false
+(960,10870)   40    1600    24    (C2 x (SL(2,5) : C2)) : C2    false
+(960,10872)   24    576    40    (C2 x (C2 . S5 = SL(2,5) . C2)) : C2    false
+(960,10873)   24    576    40    (C2 x (SL(2,5) : C2)) : C2    false
+(960,10877)   24    576    40    ((SL(2,5) : C2) : C2) : C2    false
+(960,10878)   24    576    40    ((C2 . S5 = SL(2,5) . C2) : C2) : C2    false
+(960,10891)   40    1600    24    (C2 x (SL(2,5) : C2)) : C2    false
+(960,11357)   16    256    60    (C2 x C2 x C2 x C2) : A5    false
+(960,11358)   12    144    80    (C2 x C2 x C2 x C2) : A5    false
+gap> 
+
+
+
+\end{tabular}
